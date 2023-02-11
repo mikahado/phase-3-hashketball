@@ -128,22 +128,17 @@ def game_hash
   }
 end
 
-# helper method to get all players
-
 
 def num_points_scored(player_name)
+  # uses helper method
   player = player_stats(player_name)
   player[:points]
 end
-
-
 
 def shoe_size(player_name)
   player = player_stats(player_name)
   player[:shoe]
 end
-
-
 
 def team_colors(team_name)
   team = find_team(team_name)
@@ -163,7 +158,11 @@ def player_numbers(team_name)
   end
 end
 
-
+def big_shoe_player
+  all_players.max_by do |player|
+    player[:shoe]
+  end
+end
 
 def big_shoe_rebounds
   big_shoe_player[:rebounds]
@@ -189,11 +188,6 @@ def find_team(team_name)
   team_info[1]
 end
 
-def big_shoe_player
-  all_players.max_by do |player|
-    player[:shoe]
-  end
-end
 
 
 # Write code here
